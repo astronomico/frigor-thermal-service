@@ -37,6 +37,7 @@
     "concurrently": "^7.6.0",
     "nodemon": "^2.0.22",
     "rimraf": "^4.4.1",
+    "should": "^13.2.3",
     "typescript": "^5.0.2"
   }
 }
