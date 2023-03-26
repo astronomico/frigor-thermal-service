@@ -1,12 +1,14 @@
 import { Router, Request, Response, NextFunction } from "express";
-const api1Router = Router();
+const router = Router();
 
-api1Router.get('/', (req: Request, res: Response)=>{
+// API V1 INTEGRATION
+
+router.get('/', (req: Request, res: Response)=>{
     res.send({"running": true, "gears": 1233});
 
 });
 
-api1Router.get('/location', (req: Request, res: Response)=>{
+router.get('/location', (req: Request, res: Response)=>{
     const {location, metadata} = req.body;
 
     console.table(req.params);
@@ -20,15 +22,14 @@ api1Router.get('/location', (req: Request, res: Response)=>{
 
 });
 
-api1Router.get('/current', (req: Request, res: Response)=>{
+router.get('/current', (req: Request, res: Response)=>{
     res.send({"running": true, "gears": 1233});
 
 });
 
-api1Router.get('/forecast', async (req: Request, res: Response, next: NextFunction)=>{
+router.get('/forecast', async (req: Request, res: Response, next: NextFunction)=>{
     res.send({"running": true, "gears": 1233});
 
 });
 
-
-export default api1Router;
+export default router;
