@@ -1,4 +1,10 @@
-import Server from "./models/Server";
+import Server from "./models/Server"
+import dotenv from 'dotenv'
 
-const server = new Server();
-server.start();
+dotenv.config()
+
+// Init server instance
+const server = new Server()
+
+// Listen
+server.start()
