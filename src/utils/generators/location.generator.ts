@@ -27,7 +27,6 @@ export const generateWeatherLocation = (): IWeatherLocation => {
     weatLoc.units = 'metric'
     weatLoc.lang = randLanguage({ code: true })
 
-
     console.log(weatLoc)
 
     return weatLoc

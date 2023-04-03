@@ -7,7 +7,7 @@
     "start": "node bin/index.js",
     "build": "npx tsc",
     "clean": "rimraf bin",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q bin/index.js\"",
+    "dev": "concurrently \"npx tsc --watch --p dev.tsconfig.json\" \"nodemon -q bin/index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

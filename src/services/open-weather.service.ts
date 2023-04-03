@@ -1,8 +1,9 @@
 import {IWeatherLocation} from "../types/location.type"
 import IRadiation from "../types/radiation.type"
 import axios, {isCancel, AxiosError, AxiosRequestConfig} from 'axios'
+import { IWeatherResponse } from "types/weather.types"
 
-const FLAGS = 'Weahter Service'
+const FLAGS = 'Weahter Service:'
 
 export const getRadiation = async (location:IWeatherLocation) => {
 
@@ -33,7 +34,7 @@ export const getRadiation = async (location:IWeatherLocation) => {
     })
 
     if (apiResponse.status != 200) {
-        const error = new Error(apiResponse.data)
+        const error = new Error(`${FLAGS}${apiResponse.data}`)
         error.name = apiResponse.status.toString()
         console.log(error)
         return error
@@ -46,7 +47,7 @@ export const getRadiation = async (location:IWeatherLocation) => {
     
 }
 
-export const getForecast = async (location: IWeatherLocation) => {
+export const getForecast = async (location: IWeatherLocation): Promise<IWeatherResponse> => {
 
     const API_KEY = process.env.API_KEY_OPEN_WEATHER
     const URL = process.env.SERVICE_URL_OPEN_WEATHER_V2_FORECAST
@@ -70,7 +71,12 @@ export const getForecast = async (location: IWeatherLocation) => {
     }
 
     const request = `${URL}${PATH}`
-    const response = await axios.get(request, axiosConfig)
-    return response.data
+    const response: IWeatherResponse = await axios.get(request, axiosConfig)
+    
+    if (response.cod != '200') {
+        Promise.reject(new Error(`${FLAGS}${response.message}`))
+    }
+
+    return response
 
 }
