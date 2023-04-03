@@ -2,7 +2,7 @@ import { InterfaceUnitsType } from "./location.type"
 
 export interface IUser {
     firstname?: string
-    lastname: string
+    lastname?: string
     username: string
     preferences: IUserPreferences,
     avatar: string

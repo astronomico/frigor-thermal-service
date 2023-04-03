@@ -1,4 +1,8 @@
 
+export interface ILocationRequest {
+  userAddress: string;
+}
+
 export interface ILocation {
   country: string
   countryCode: string
