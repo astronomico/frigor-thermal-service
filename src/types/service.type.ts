@@ -1,4 +1,1 @@
-
-export default interface IService {
-    
-}
+export default interface IService {running: boolean}

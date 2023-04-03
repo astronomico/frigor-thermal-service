@@ -8,7 +8,9 @@
     "build": "npx tsc",
     "clean": "rimraf bin",
     "dev": "concurrently \"npx tsc --watch --p dev.tsconfig.json\" \"nodemon -q bin/index.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .ts",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "repository": {
     "type": "git",
@@ -41,7 +43,10 @@
     "@typescript-eslint/parser": "^5.57.0",
     "concurrently": "^7.6.0",
     "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.22",
+    "prettier": "^2.8.7",
     "rimraf": "^4.4.1",
     "supertest": "^6.3.3",
     "typescript": "^5.0.2"

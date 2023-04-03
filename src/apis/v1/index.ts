@@ -1,20 +1,15 @@
-import { Router, Request, Response, NextFunction } from "express"
-import { getIpApiLocation } from "../../services/ip-api.service"
-import { getForecast, getRadiation } from "../../services/open-weather.service"
-import { ILocationResponse, ILocationResponseStatus, IWeatherLocation } from "../../types/location.type"
-import { generateWeatherLocation, generateWeatherLocationByAddress } from "../../utils/generators/location.generator"
-import { generateUser } from "../../utils/generators/user.generator"
-import locationRoutes from "./routes/location.routes"
-import userRoutes from "./routes/user.routes"
-import weatherRoutes from "./routes/weather.routes"
+import { Router, Request, Response, NextFunction } from 'express'
+import locationRoutes from './routes/location.routes'
+import userRoutes from './routes/user.routes'
+import weatherRoutes from './routes/weather.routes'
 
 const router = Router()
+const FLAGS = 'Thermal API v1:'
 
 // API V1 INTEGRATION
 
-router.get('/', (req: Request, res: Response)=>{
-    res.send({"running": true})
-
+router.get('/', (req: Request, res: Response) => {
+  res.send({ information: `${FLAGS} Running` })
 })
 
 router.use('/user', userRoutes)

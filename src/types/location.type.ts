@@ -1,6 +1,5 @@
-
 export interface ILocationRequest {
-  userAddress: string;
+  userAddress: string
 }
 
 export interface ILocation {
@@ -25,7 +24,8 @@ export interface ILocationResponse extends ILocation {
 }
 
 export enum ILocationResponseStatus {
-  success = 'success', error = 'error',
+  success = 'success',
+  error = 'error'
 }
 
 export interface ICity {
