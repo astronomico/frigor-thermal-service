@@ -1,33 +1,14 @@
-import { Router, Request, Response, NextFunction } from 'express'
-import {
-  getForecast,
-  getRadiation
-} from '../../../services/open-weather.service'
-import { IWeatherLocation } from '../../../types/location.type'
-import { generateWeatherLocation } from '../../../utils/generators/location.generator'
+import { Router } from 'express'
+import WeatherController from '../../../controllers/weather.controller'
+
 const weatherRoutes = Router()
+const weatherController = new WeatherController()
 
-weatherRoutes.get('/current', (req: Request, res: Response) => {
-  res.json({ running: true, gears: 1233 })
-})
-
-weatherRoutes.get(
-  '/forecast',
-  async (req: Request, res: Response, next: NextFunction) => {
-    const location: IWeatherLocation = generateWeatherLocation()
-    const forecast = await getForecast(location)
-    res.json(forecast)
-  }
-)
-
-weatherRoutes.get(
-  '/radiation',
-  async (req: Request, res: Response, next: NextFunction) => {
-    const location: IWeatherLocation = generateWeatherLocation()
-    console.table(location)
-    const radiation = await getRadiation(location)
-    res.json(radiation)
-  }
-)
+// GET CURRENT FORECAST
+weatherRoutes.get('/current', weatherController.getCurrentWeather)
+// GET FORECAST BY LOCATION
+weatherRoutes.get('/forecast', weatherController.getForecast)
+// GET RADIATION FROM LOCATION
+weatherRoutes.get('/radiation', weatherController.getRadiation)
 
 export default weatherRoutes

@@ -1,14 +1,26 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to build",
+            "type": "node-terminal",
+            "name": "D",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "command": "npx nodemon -q ${fileBasenameNoExtension}",
+            "cwd": "${fileDirname}"
+          },
+        {
             "type": "node",
             "request": "attach",
-            "port": 8000
+            "name": "Attach dev",
+            "port": 8000,
+            "presentation": {
+                "hidden": false,
+                "group": "dev",
+                "order": 1,
+                "showReuseMessage": true
+            },
+            "preLaunchTask": "debug"
         }
     ]
 }

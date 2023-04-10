@@ -29,14 +29,14 @@ export const generateWeatherLocation = (): IWeatherLocation => {
   weatLoc.units = 'metric'
   weatLoc.lang = randLanguage({ code: true })
 
-  console.log(weatLoc)
+  // console.log(weatLoc)
 
   return weatLoc
 }
 
 export const generateWeatherLocationByAddress = (): IWeatherLocation => {
   const ipAddress = randIp()
-  const ipAddressLOng = randIp({ length: 11 })
+  // const ipAddressLong = randIp({ length: 11 })
   const weatLoc = new WeatherLocation(
     randLatitude(),
     randLongitude(),

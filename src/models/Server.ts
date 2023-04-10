@@ -1,5 +1,7 @@
-import express, { Express, Request, Response, NextFunction } from 'express'
+import express, { Express } from 'express'
+import { errorMiddleware } from '../middlewares/error.middleware'
 import apis from '../apis'
+import { connectDB } from '../configs/database.config'
 // import {should} from 'chai'
 
 export default class Server {
@@ -8,19 +10,25 @@ export default class Server {
   constructor() {
     this.app = express()
     this.PORT = Number(process.env.PORT) ?? -1
-
-    console.log(this.PORT)
     // (PORT).should.be.Number()
     this.setUp()
   }
 
   private setUp() {
-    this.app.use(express.json())
+    this.setMiddlewares()
     this.app.use('/api', apis)
   }
 
-  public start() {
+  private setMiddlewares() {
+    this.app.use(express.json())
+    this.app.use(errorMiddleware)
+  }
+
+  public async start() {
+    await connectDB()
+
     this.app.listen(this.PORT, () => {
+      // eslint-disable-next-line no-console
       console.log(`[thermal]: Listening on ${this.PORT}`)
     })
   }

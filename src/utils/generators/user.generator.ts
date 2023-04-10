@@ -19,7 +19,8 @@ export const generateUser = (): IUser => {
     avatar: randAvatar(),
     preferences: {
       interfaceLight: 'dark',
-      interfaceUnits: 'metric'
+      interfaceUnits: 'metric',
+      lang: 'en'
     }
   }
 }

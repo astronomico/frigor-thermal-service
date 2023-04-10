@@ -1,5 +1,5 @@
 export default interface IRadiation {
-    rad: any
- }
+  rad: any
+}
 
 // export type IRadiationResponse = Response<>

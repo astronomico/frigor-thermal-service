@@ -1,16 +1,9 @@
-import { InterfaceUnitsType } from './location.type'
+import { ISettings } from './settings.type'
 
 export interface IUser {
   firstname?: string
   lastname?: string
   username: string
-  preferences: IUserPreferences
+  preferences: ISettings
   avatar: string
 }
-
-export interface IUserPreferences {
-  interfaceLight: InterfaceLightType
-  interfaceUnits: InterfaceUnitsType
-}
-
-export type InterfaceLightType = 'light' | 'dark'

@@ -23,13 +23,7 @@ export const getRadiation = async (location: IWeatherLocation) => {
     }
   }
 
-  const apiResponse = await axios.get(SERIVICE_URL_RADIATION, {
-    params: {
-      lat: location.latitude,
-      lon: location.longitude,
-      appid: API_KEY_OPEN_WEATHER
-    }
-  })
+  const apiResponse = await axios.get(SERIVICE_URL_RADIATION, axiosConfig)
 
   if (apiResponse.status != 200) {
     const error = new Error(`${FLAGS}${apiResponse.data}`)
